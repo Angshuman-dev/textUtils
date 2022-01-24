@@ -13,6 +13,13 @@ export default function TextForm(props) {
         setText(text.toLowerCase())
     }
 
+    const handleCopyText =()=>{
+      var copyText = document.getElementById("myBox");
+        console.log(text)
+        copyText.select()
+        navigator.clipboard.writeText(copyText.value)
+    }
+
     const [text,setText] = useState('')
   return (
       <>
@@ -23,6 +30,7 @@ export default function TextForm(props) {
   </div>
   <button className="btn btn-primary mx-2" onClick={handleupClick}>Convert to uppercase</button>
   <button className="btn btn-primary" onClick={handlelowClick}>Convert to lowercase</button>
+  <button className="btn btn-primary" onClick={handleCopyText}>Copy text</button>
 
   </div>
   
