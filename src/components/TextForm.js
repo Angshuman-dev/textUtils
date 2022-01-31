@@ -2,15 +2,19 @@ import React,{useState} from 'react';
 
 
 export default function TextForm(props) {
+
+    console.log(props.mode)
     const handleChange = (event)=>{
         setText(event.target.value)
     }
 
     const handleupClick = ()=>{
         setText(text.toUpperCase())
+        props.showAlert("Converted to uppercase","success")
     }
     const handlelowClick = ()=>{
         setText(text.toLowerCase())
+        props.showAlert("Converted to lowercase","success")
     }
 
     const handleCopyText =()=>{
@@ -23,14 +27,14 @@ export default function TextForm(props) {
     const [text,setText] = useState('')
   return (
       <>
-      <div className='container'>
+      <div className='container' >
     <h1>{props.heading}</h1>
     <div className="mb-3">
-    <textarea className="form-control" id="myBox" onChange={handleChange} value={text} rows="8"></textarea>
+    <textarea className="form-control" id="myBox" style={{backgroundColor: props.mode==='light' ? 'white' : 'grey',color:props.mode==='light'?'black':'white'}} onChange={handleChange} value={text} rows="8"></textarea>
   </div>
-  <button className="btn btn-primary mx-2" onClick={handleupClick}>Convert to uppercase</button>
-  <button className="btn btn-primary" onClick={handlelowClick}>Convert to lowercase</button>
-  <button className="btn btn-primary" onClick={handleCopyText}>Copy text</button>
+  <button className="btn btn-primary mx-2" style={{backgroundColor:props.mode2==='red' ? 'yellow' : 'red'}} onClick={handleupClick}>Convert to uppercase</button>
+  <button className="btn btn-primary" style={{backgroundColor:props.mode2==='red' ? 'yellow' : 'red'}} onClick={handlelowClick}>Convert to lowercase</button>
+  <button className="btn btn-primary" style={{backgroundColor:props.mode2==='red' ? 'yellow' : 'red'}} onClick={handleCopyText}>Copy text</button>
 
   </div>
   
